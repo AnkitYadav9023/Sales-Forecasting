@@ -169,6 +169,8 @@ def process_uploaded(raw_bytes):
 @st.cache_data
 def run_forecast(sales_arr, dates_arr, n_days, model_name):
     from statsmodels.tsa.arima.model import ARIMA as _ARIMA
+    import os
+    os.environ['STAN_BACKEND'] = 'CMDSTANPY'
     from prophet import Prophet as _Prophet
     import xgboost as _xgb
 
